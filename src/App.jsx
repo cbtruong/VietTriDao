@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SC004 from "./pages/SC004";
+import SC002_3 from "./pages/SC002_3";
+
+const generateUsers = () => {
+  return [
+    { email: "user@example.com", password: "123456", phone: "1234567890" },
+    { email: "user2@example.com", password: "password2", phone: "1234567891" },
+    { email: "user3@example.com", password: "password3", phone: "1234567892" },
+    { email: "user4@example.com", password: "password4", phone: "1234567893" },
+    { email: "user5@example.com", password: "password5", phone: "1234567894" },
+    { email: "user6@example.com", password: "password6", phone: "1234567895" },
+    { email: "user7@example.com", password: "password7", phone: "1234567896" },
+    { email: "user8@example.com", password: "password8", phone: "1234567897" },
+    { email: "user9@example.com", password: "password9", phone: "1234567898" },
+    { email: "user10@example.com", password: "password10", phone: "1234567899" },
+  ];
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const users = generateUsers();
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.removeItem("user")
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<SC004 />} />
+        <Route path="/login" element={<SC002_3 />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
