@@ -26,12 +26,15 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<SC004 />} />
-        <Route path="/login" element={<SC002_3 />} />
-      </Routes>
-    </Router>
+    <>
+    <SC004/>
+    </>
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<SC004 />} />
+    //     <Route path="/login" element={<SC002_3 />} />
+    //   </Routes>
+    // </Router>
   );
 }
 
